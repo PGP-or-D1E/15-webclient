@@ -4,8 +4,8 @@ async function fetchTasksApi() {
   return await client.get('http://localhost:8989/read');
 }
 
-async function taskCreateApi(task) {
-  return await client.post('http://localhost:8989/create', { task });
+async function taskCreateApi(job) {
+  return await client.post('http://localhost:8989/create', { job });
 }
 
 async function taskDoneApi(id) {

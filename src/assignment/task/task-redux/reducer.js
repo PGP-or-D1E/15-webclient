@@ -1,30 +1,31 @@
-const defaultState = {
-    isDone: false,
-    isDelete: false,
-    images: "",
-    tasks: "",
-    allImages: [],
-    allTasks: []
-}
+const defaultState = []
 
 function add(state, action){
-    state = {
-        isDone: action.payload.isDone,
-        isDelete: action.payload.isDelete,
-        images: action.payload.images,
-        tasks: action.payload.tasks
-    }
-    state.allImages.push(action.payload.images)
-    state.allTasks.push(action.payload.tasks)
+    state.push({ id: action.payload.id, job: action.payload.job, done: false, cancel: false });
     return state;
 }
 
-function deleteTask(state, action){
-    
+function read(state, action) {
+    state = action.payload;
+    return state;
+}
+
+function done(state, action) {
+    const task = state.find((t) => t.id === action.payload);
+    task.done = true;
+    return state;
+}
+
+function cancel(state, action) {
+    const task = state.find((t) => t.id === action.payload);
+    task.cancel = true;
+    return state;
 }
 
 module.exports = {
     defaultState,
     add,
-    deleteTask
-  };
+    read,
+    done,
+    cancel,
+};
