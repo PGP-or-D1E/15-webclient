@@ -1,5 +1,6 @@
 const Busboy = require('busboy');
 const { Writable } = require('stream');
+const { client } = require('./client');
 
 function createWorker(req, res) {
   return new Promise((resolve, reject) => {
@@ -34,6 +35,22 @@ function createWorker(req, res) {
   });
 }
 
+const PORT = 7000;
+async function fetchWorkerApi() {
+  return await client.get(`http://localhost:${PORT}/read`);
+}
+
+async function workerCreateApi(worker) {
+  return await client.post(`http://localhost:${PORT}/read`, worker);
+}
+
+async function workerDeleteApi(id) {
+  return await client.get(`http://localhost:${PORT}/read?id=${id}`);
+}
+
 module.exports = {
   createWorker,
+  fetchWorkerApi,
+  workerCreateApi,
+  workerDeleteApi,
 };
