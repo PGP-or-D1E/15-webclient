@@ -7,6 +7,7 @@ const {
   updateTask,
   cancelTask,
   doneTask,
+  readTask,
 } = require('./test-database');
 
 async function create(data) {
@@ -61,6 +62,12 @@ async function cancel(id) {
   return task;
 }
 
+async function read() {
+  const data = await readTask();
+  const result = JSON.parse(data);
+  return result;
+}
+
 module.exports = {
   ERROR_CREATE_DATA_INVALID,
   ERROR_TASK_NOT_FOUND,
@@ -68,4 +75,5 @@ module.exports = {
   update,
   done,
   cancel,
+  read,
 };
