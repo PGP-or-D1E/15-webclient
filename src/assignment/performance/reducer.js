@@ -1,11 +1,11 @@
 const initialState = {
   worker: {
-    created: 100,
+    created: 0,
   },
   task: {
-    created: 20,
-    done: 30,
-    cancel: 50,
+    created: 0,
+    done: 0,
+    cancel: 0,
   }
 };
 

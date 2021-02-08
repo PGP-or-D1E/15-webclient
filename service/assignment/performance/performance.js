@@ -18,7 +18,7 @@ async function listTask() {
     tasks = 0;
   }
 
-  const result = { 'task.created': tasks };
+  const result = { taskCreated: tasks };
   return result;
 }
 
@@ -28,7 +28,7 @@ async function listTaskDone() {
     tasks = 0;
   }
 
-  const result = { 'task.done': tasks };
+  const result = { taskDone: tasks };
   return result;
 }
 
@@ -38,7 +38,17 @@ async function listTaskCancel() {
     tasks = 0;
   }
 
-  const result = { 'task.cancel': tasks };
+  const result = { taskCancel: tasks };
+  return result;
+}
+
+async function listWorkerCreated() {
+  let workers = await read('worker.created');
+  if (!workers) {
+    workers = 0;
+  }
+
+  const result = { workerCreated: workers };
   return result;
 }
 
@@ -70,5 +80,6 @@ module.exports = {
   listTaskCancel,
   dropList,
   ERROR_KEY_NOT_FOUND,
-  workerLog
+  workerLog,
+  listWorkerCreated,
 };

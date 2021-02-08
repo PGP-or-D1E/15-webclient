@@ -5,7 +5,8 @@ const {
   listTaskDone,
   dropList,
   ERROR_KEY_NOT_FOUND,
-  workerLog
+  workerLog,
+  listWorkerCreated,
 } = require('./performance');
 const url = require('url');
 
@@ -34,6 +35,13 @@ async function listTaskDoneSvc(req, res) {
 
 async function listTaskCancelSvc(req, res) {
   const data = await listTaskCancel();
+  res.setHeader('content-type', 'application/json');
+  res.write(JSON.stringify(data));
+  res.end();
+}
+
+async function listWorkerCreatedSvc(req, res) {
+  const data = await listWorkerCreated();
   res.setHeader('content-type', 'application/json');
   res.write(JSON.stringify(data));
   res.end();
@@ -82,5 +90,6 @@ module.exports = {
   listTaskDoneSvc,
   listTaskCancelSvc,
   dropListSvc,
-  workerSvc
+  workerSvc,
+  listWorkerCreatedSvc,
 };

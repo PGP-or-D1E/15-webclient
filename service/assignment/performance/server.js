@@ -7,13 +7,25 @@ const {
   listTaskCancelSvc,
   listTaskDoneSvc,
   dropListSvc,
-  workerSvc
+  workerSvc,
+  listWorkerCreatedSvc,
 } = require('./performance.service');
 
 let server;
 
 function run() {
   server = createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Request-Method', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+
+    if (req.method === 'OPTIONS') {
+      res.writeHead(204);
+      res.end();
+      return;
+    }
+
     function respond(statusCode, message) {
       res.statusCode = statusCode || 200;
       res.write(message || '');
@@ -33,6 +45,13 @@ function run() {
       case '/worker':
         if (req.method === 'GET') {
           return workerSvc(req, res);
+        } else {
+          respond(404);
+        }
+        break;
+      case '/worker/created':
+        if (req.method === 'GET') {
+          return listWorkerCreatedSvc(req, res);
         } else {
           respond(404);
         }

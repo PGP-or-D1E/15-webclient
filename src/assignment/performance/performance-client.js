@@ -4,34 +4,32 @@ const {
   getLogTaskDoneAction,
   getLogTaskCancelAction,
 } = require('./store');
+const {
+  fetchTaskCancelApi,
+  fetchTaskCreatedApi,
+  fetchTaskDoneApi,
+  fetchWorkerCreatedApi,
+} = require('./api/performance-service');
 
 
-const getLogWorkerCreatedAsync = (dispatch, getState) => {
-  setTimeout(()=> {
-    const workerCreated = { 'workerCreated': 1024 };
+const getLogWorkerCreatedAsync = async (dispatch, getState) => {
+    const workerCreated = await fetchWorkerCreatedApi();
     dispatch(getLogWorkerCreatedAction(workerCreated));
-  }, 1000);
 }
 
-const getLogTaskCreatedAsync = (dispatch, getState) => {
-  setTimeout(()=> {
-    const taskCreated = { 'taskCreated': 2048 };
+const getLogTaskCreatedAsync = async (dispatch, getState) => {
+    const taskCreated = await fetchTaskCreatedApi();
     dispatch(getLogTaskCreatedAction(taskCreated));
-  }, 1000);
 }
 
-const getLogTaskDoneAsync = (dispatch, getState) => {
-  setTimeout(()=> {
-    const taskDone = { 'taskDone': 256 };
+const getLogTaskDoneAsync = async (dispatch, getState) => {
+    const taskDone = await fetchTaskDoneApi();
     dispatch(getLogTaskDoneAction(taskDone));
-  }, 1000);
 }
 
-const getLogTaskCancelAsync = (dispatch, getState) => {
-  setTimeout(()=> {
-    const taskCancel = { 'taskCancel': 123 };
+const getLogTaskCancelAsync = async (dispatch, getState) => {
+    const taskCancel = await fetchTaskCancelApi();
     dispatch(getLogTaskCancelAction(taskCancel));
-  }, 1000);
 }
 
 module.exports = {

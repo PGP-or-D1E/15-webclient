@@ -5,6 +5,7 @@ const {
   getLogTaskCreatedAsync,
   getLogTaskDoneAsync,
 } = require('./performance-client');
+require('./main.css');
 
 const btnWorker = document.getElementById('btn-worker');
 const btnTaskCreated = document.getElementById('btn-tcreated');

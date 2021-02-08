@@ -31,3 +31,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.button:focus {
+  outline: none;
+}

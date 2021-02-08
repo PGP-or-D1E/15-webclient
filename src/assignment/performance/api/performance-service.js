@@ -9,11 +9,11 @@ async function fetchTaskCreatedApi() {
 }
 
 async function fetchTaskDoneApi() {
-  return await client.get('http://localhost:3232/task/created');
+  return await client.get('http://localhost:3232/task/done');
 }
 
 async function fetchTaskCancelApi() {
-  return await client.get('http://localhost:3232/task/created');
+  return await client.get('http://localhost:3232/task/cancel');
 }
 
 module.exports = {
