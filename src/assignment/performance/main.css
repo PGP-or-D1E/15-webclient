@@ -35,3 +35,7 @@
 .button:focus {
   outline: none;
 }
+
+.text-center {
+  text-align: center;
+}
