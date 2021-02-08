@@ -1,7 +1,7 @@
 const { createServer } = require('http');
 const { stdout } = require('process');
 const url = require('url');
-const { createSvc, updateSvc, doneSvc, cancelSvc } = require('./task.service');
+const { createSvc, updateSvc, doneSvc, cancelSvc, readSvc } = require('./task.service');
 
 let server;
 
@@ -40,6 +40,13 @@ function run() {
       case '/cancel':
         if (req.method === 'POST') {
           return cancelSvc(req, res);
+        } else {
+          respond(404);
+        }
+        break;
+      case '/read':
+        if (req.method === 'GET') {
+          return readSvc(req, res);
         } else {
           respond(404);
         }

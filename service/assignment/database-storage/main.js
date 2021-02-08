@@ -12,7 +12,7 @@ const {
   readWorker,
   updateWorker,
   deleteWorker,
-  getWorkerById
+  getWorkerById,
 } = require('./sequalize/worker-crud');
 
 const {
