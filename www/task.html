@@ -4,10 +4,41 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../src/assignment/task/assets/task-style.css">
+  <title>Task</title>
 </head>
 <body>
-  
+  <form action="">
+    <h3>Menambahkan Pekerjaan</h3>
+    <form id="addTask-form" action="" method="post">
+      <label for="">Nama Pekerjaan</label><br/>
+      <input type="text" id="task" placeholder="Nama Pekerjaan" /> <br/>
+      <label for="">Tambah Image</label><br/>
+      <input type="file" id="task-image" /> <br/><br/>
+      <button type="submit">Submit Pekerjaan Baru</button>
+    </form>
+    <hr />
+  </form>
+
+  //Dummy Data
+  <h4>Daftar Pekerjaan Tersedia</h4>
+  <div class="row">
+    <div class="col s12 m7 l3 xl3">
+      <div class="card">
+        <div class="card-image">
+          <img src=".././src/assignment/task/assets/programmer.jpg">
+          <span class="card-title">Programmer</span>
+        </div>
+        <div class="card-action">
+          <p>Status: Done</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script type="text/javascript" src="./task.js"></script>
 </body>
