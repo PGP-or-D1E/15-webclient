@@ -82,7 +82,7 @@ async function updateTask({ id, assigneeId, job, attachment, done, cancel }) {
 async function doneTask({ id }) {
   const result = await task.update(
     {
-      done: 1,
+      done: true,
     },
     {
       where: {
@@ -96,7 +96,7 @@ async function doneTask({ id }) {
 async function cancelTask({ id }) {
   const result = await task.update(
     {
-      cancel: 1,
+      cancel: true,
     },
     {
       where: {

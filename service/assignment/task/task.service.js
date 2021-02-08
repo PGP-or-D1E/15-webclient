@@ -7,6 +7,7 @@ const {
   cancel,
   done,
   update,
+  read,
   ERROR_CREATE_DATA_INVALID,
 } = require('./task');
 
@@ -16,8 +17,8 @@ function createSvc(req, res) {
   const data = {
     job: '',
     attachment: '',
-    done: '',
-    cancel: '',
+    done: false,
+    cancel: false,
     assigneeId: null,
   };
 
@@ -67,7 +68,7 @@ function createSvc(req, res) {
   });
 
   busboy.on('field', async (fieldname, val) => {
-    if (['job', 'done', 'cancel', 'assigneeId'].includes(fieldname)) {
+    if (['job', 'assigneeId'].includes(fieldname)) {
       data[fieldname] = val;
     }
   });
@@ -183,9 +184,17 @@ function cancelSvc(req, res) {
   });
 }
 
+async function readSvc(req, res) {
+  const tasks = await read();
+  res.setHeader('content-type', 'application/json');
+  res.write(JSON.stringify(tasks));
+  res.end();
+}
+
 module.exports = {
   createSvc,
   updateSvc,
   doneSvc,
   cancelSvc,
+  readSvc,
 };
