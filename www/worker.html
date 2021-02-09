@@ -5,10 +5,63 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="worker.css">
 </head>
 <body>
-  
-
+  <center><b><p1 class="header">WORKER</p1></b></center>
+  <div class="container">
+    <h3 class="title">Add New Worker</h3>
+    <form id="form-pesan" method="POST" class="">
+      <div class="input-name">
+        <input name="nama" type="text" placeholder="Name"/>
+      </div>
+      <div>
+        <input name="address" type="text" placeholder="Address"/>
+      </div>
+      <div>
+        <input name="email" type="text" placeholder="Email" />
+      </div>
+      <div>
+        <input name="phone" type="text" placeholder="Phone" />
+      </div>
+      <div>
+        <input name="biografi" type="text" placeholder="Biografi"/>
+      </div>
+     <div class="file">
+        <input name="photo" type="file" accept="image/*" />
+      </div>
+      <p>
+        <button type="submit">Kirim</button>
+      </p>
+    </form>
+  </div>
+    <table cellspacing='0'>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Biografi</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="list-worker">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+   
   <script type="text/javascript" src="./worker.js"></script>
 </body>
 </html>
