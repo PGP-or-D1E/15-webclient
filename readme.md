@@ -23,7 +23,7 @@ Untuk menjalankan service :
   - Database yang digunakan : redis
   - PORT : 3232
 
-## Versi 1.1
+## Versi 1.2
 1. Task service
     - menampilkan service
     - task selesai
@@ -33,3 +33,8 @@ Untuk menjalankan service :
     - menampilkan jumlah task yang dibuat
     - menampilkan jumlah task yang dibatalkan
     - menampilkan jumlah task yang selesai
+3. Worker Service
+    - menampilkan detail pekerja
+    - menambah pekerja
+    - menghapus pekerja
+
