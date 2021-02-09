@@ -10,6 +10,7 @@ const initialState = [
 
 function add(state, action) {
   state.push({
+    id: action.id,
     nama: action.nama,
     alamat: action.alamat,
     email: action.email,
@@ -26,7 +27,9 @@ function read(state, action) {
 }
 
 function deleteWorker(state, action) {
-  state.splice(action.payload, 1);
+  const index = state.findIndex(worker => worker.id === action.payload);
+  console.log(index);
+  state.splice(index, 1);
   return state;
 }
 

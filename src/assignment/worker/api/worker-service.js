@@ -1,39 +1,39 @@
-const Busboy = require('busboy');
-const { Writable } = require('stream');
+// const Busboy = require('busboy');
+// const { Writable } = require('stream');
 const { client } = require('./client');
 
-function createWorker(req, res) {
-  return new Promise((resolve, reject) => {
-    const busboy = new Busboy({ headers: req.headers });
+// function createWorker(req, res) {
+//   return new Promise((resolve, reject) => {
+//     const busboy = new Busboy({ headers: req.headers });
 
-    function abort() {
-      req.unpipe(busboy);
-      if (!req.aborted) {
-        res.statusCode = 413;
-        res.end();
-      }
-    }
+//     function abort() {
+//       req.unpipe(busboy);
+//       if (!req.aborted) {
+//         res.statusCode = 413;
+//         res.end();
+//       }
+//     }
 
-    let data = {};
+//     let data = {};
 
-    busboy.on('field', (fieldname, val) => {
-      if (
-        ['nama', 'email', 'telepon', 'alamat', 'biografi'].includes(fieldname)
-      ) {
-        data[fieldname] = val;
-      }
-    });
+//     busboy.on('field', (fieldname, val) => {
+//       if (
+//         ['nama', 'email', 'telepon', 'alamat', 'biografi'].includes(fieldname)
+//       ) {
+//         data[fieldname] = val;
+//       }
+//     });
 
-    busboy.on('finish', () => {
-      resolve(data);
-    });
+//     busboy.on('finish', () => {
+//       resolve(data);
+//     });
 
-    req.on('aborted', abort);
-    busboy.on('error', abort);
+//     req.on('aborted', abort);
+//     busboy.on('error', abort);
 
-    req.pipe(busboy);
-  });
-}
+//     req.pipe(busboy);
+//   });
+// }
 
 const PORT = 7000;
 async function fetchWorkerApi() {
@@ -41,15 +41,15 @@ async function fetchWorkerApi() {
 }
 
 async function workerCreateApi(worker) {
-  return await client.post(`http://localhost:${PORT}/read`, worker);
+  return await client.post(`http://localhost:${PORT}/create`, worker);
 }
 
 async function workerDeleteApi(id) {
-  return await client.get(`http://localhost:${PORT}/read?id=${id}`);
+  return await client.get(`http://localhost:${PORT}/delete?id=${id}`);
 }
 
 module.exports = {
-  createWorker,
+  // createWorker,
   fetchWorkerApi,
   workerCreateApi,
   workerDeleteApi,

@@ -10,14 +10,14 @@ const {
   deleteWorkerAction,
 } = require('./store');
 
-const createWorkerAsync = (worker) => {
+const addWorkerAsync = (worker) => {
   return async (dispatch, getState) => {
     const workerData = await workerCreateApi(worker);
     dispatch(addAction(workerData));
   }
 }
 
-const fetchWorkerAsync = (dispatch, getState) => {
+const fetchWorkerAsync = async (dispatch, getState) => {
   const workers = await fetchWorkerApi();
   dispatch(readAction(workers));
 }
@@ -28,7 +28,7 @@ const deleteWorkerAsync = (id) => async (dispatch, getState) => {
 }
 
 module.exports = {
-  createWorkerAsync,
+  addWorkerAsync,
   fetchWorkerAsync,
   deleteWorkerAsync,
 }
