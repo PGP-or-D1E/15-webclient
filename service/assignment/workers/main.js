@@ -23,6 +23,16 @@ const { streamer } = require("../nats/nats");
 
 const server = createServer(async (req, res) => {
    let method = req.method;
+   res.setHeader('Access-Control-Allow-Origin', '*');
+   res.setHeader('Access-Control-Request-Method', '*');
+   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT');
+   res.setHeader('Access-Control-Allow-Headers', '*');
+
+   if (req.method === 'OPTIONS') {
+   res.writeHead(204);
+   res.end();
+   return;
+   }
 
    let message = '404 not found';
    let statusCode = 200;
